@@ -1,7 +1,6 @@
 // -------------------------------------------------------------------------------------------------
 // Assets/Editor/JenkinsBuild.cs
 // -------------------------------------------------------------------------------------------------
-using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
@@ -26,11 +25,13 @@ public class JenkinsBuild {
     // ------------------------------------------------------------------------
     // called from Jenkins
     // ------------------------------------------------------------------------
+    [MenuItem("Assets/BuildJenkinsGame")]
     public static void BuildWindows64() {
         var args = FindArgs();
         System.Console.WriteLine($"appName -> {args.appName}; targetDir -> {args.targetDir};");
 
-        string fullPathAndName = args.targetDir + args.appName;
+        string fullPathAndName = args.targetDir + args.appName + ".exe";
+        System.Console.WriteLine($"fullPathAndName -> {fullPathAndName};");
         BuildProject(EnabledScenes, fullPathAndName, BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64, BuildOptions.None);
     }
 
