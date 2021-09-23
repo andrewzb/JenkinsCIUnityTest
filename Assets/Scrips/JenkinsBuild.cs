@@ -28,6 +28,7 @@ public class JenkinsBuild {
     // ------------------------------------------------------------------------
     public static void BuildWindows64() {
         var args = FindArgs();
+        System.Console.WriteLine($"appName -> {args.appName}; targetDir -> {args.targetDir};");
 
         string fullPathAndName = args.targetDir + args.appName;
         BuildProject(EnabledScenes, fullPathAndName, BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64, BuildOptions.None);
